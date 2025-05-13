@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "module": "NodeNext",
+    "target": "ES2022",
+    "declaration": true,
+    "sourceMap": true,
+    "lib": [ "esnext.decorators", "ES2022", "DOM" ],
+    "moduleResolution": "nodenext",
+    "outDir": "./dist",
+	"jsxFactory": "F._jsx",
+	"jsxFragmentFactory": "F._fragment",
+	"jsx": "react",
+	"types": ["@miniweb/core"]
+  },
+    "include": [
+        "src"
+    ],
+}
+

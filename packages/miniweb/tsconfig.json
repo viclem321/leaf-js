@@ -1,0 +1,18 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./core" }
+  ],
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "strict": true,
+    "esModuleInterop": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "jsx": "react-jsx",
+    "target": "ESNext",
+    "lib": ["esnext.decorators", "ES2022", "DOM"]
+  }
+}

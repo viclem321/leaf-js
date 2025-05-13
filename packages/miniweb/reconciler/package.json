@@ -1,0 +1,14 @@
+{
+    "name": "@miniweb/reconciler",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "dist/index.mjs",
+    "types": "dist/index.d.mts",
+    "scripts": {
+        "build": "tsc",
+        "watch": "tsc -w"
+    },
+    "devDependencies": {
+        "typescript": "^5.4.5"
+    }
+}

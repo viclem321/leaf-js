@@ -1,0 +1,15 @@
+{
+  "name": "miniweb-monorepo",
+  "private": true,
+  "packageManager": "yarn@3.8.2",
+  "workspaces": [
+    "packages/miniweb",
+    "packages/miniweb/*",
+    "packages/client"
+  ],
+  "scripts": {
+    "compile-miniweb": "yarn workspace miniweb compile-core",
+    "compile-client": "yarn workspace miniweb-client build",
+    "full-build": "yarn workspace miniweb compile-core && yarn workspace miniweb-client build"
+  }
+}

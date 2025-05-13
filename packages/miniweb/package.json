@@ -1,0 +1,15 @@
+{
+    "name": "miniweb",
+    "version": "1.0.0",
+    "packageManager": "yarn@4.8.1",
+    "license": "MIT",
+    "main": "lib/bundle.mjs",
+    "scripts": {
+        "prepublish": "tsc -b",
+        "compile-core": "tsc -b",
+        "watch-core": "tsc -wb"
+    },
+    "devDependencies": {
+        "typescript": "^5.4.5"
+    }
+}

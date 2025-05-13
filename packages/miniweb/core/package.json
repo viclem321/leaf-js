@@ -1,0 +1,13 @@
+{
+    "name": "@miniweb/core",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "dist/index.mjs",
+    "types": "dist/index.d.mts",
+    "dependencies": {
+        "@miniweb/reconciler": "workspace:*"
+    },
+    "devDependencies": {
+        "typescript": "^5.4.5"
+    }
+}

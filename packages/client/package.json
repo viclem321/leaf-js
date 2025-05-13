@@ -1,0 +1,22 @@
+{
+  "name": "miniweb-client",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c rollup.config.mjs",
+    "watch": "rollup -c rollup.config.mjs --watch"
+  },
+  "dependencies": {
+    "@miniweb/core": "*"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "rollup": "^4.18.0",
+    "rollup-plugin-import-css": "^3.5.8",
+    "tslib": "^2.8.1",
+    "typescript": "^5.4.5"
+  },
+  "packageManager": "yarn@3.8.2"
+}
