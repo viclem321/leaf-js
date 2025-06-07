@@ -5,11 +5,11 @@
   "workspaces": [
     "packages/miniweb",
     "packages/miniweb/*",
-    "packages/client"
+    "packages/demo"
   ],
   "scripts": {
     "compile-miniweb": "yarn workspace miniweb compile-core",
-    "compile-client": "yarn workspace miniweb-client build",
-    "full-build": "yarn workspace miniweb compile-core && yarn workspace miniweb-client build"
+    "compile-demo": "yarn workspace miniweb-demo build",
+    "full-build": "yarn workspace miniweb compile-core && yarn workspace miniweb-demo build"
   }
 }
