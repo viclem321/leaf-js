@@ -1,21 +1,45 @@
+
+/**
+
+  🧠 TypeScript Configuration 
+
+  This file tells the TypeScript compiler how to interpret, validate, and transpile the TypeScript project and JSX files.
+  As a reminder, TypeScript converts `.ts` and `.tsx` modules into standard JavaScript that can run in the browser.
+  In our case, TypeScript is not run manually, it's automatically invoked by Rollup during the build process (see `rollup.config.mjs`).
+
+**/
+
+
 {
   "compilerOptions": {
-    "strict": true,
-    "esModuleInterop": true,
-    "module": "NodeNext",
-    "target": "ES2022",
-    "declaration": true,
-    "sourceMap": true,
-    "lib": [ "esnext.decorators", "ES2022", "DOM" ],
-    "moduleResolution": "nodenext",
-    "outDir": "./dist",
-	"jsxFactory": "F._jsx",
-	"jsxFragmentFactory": "F._fragment",
-	"jsx": "react",
-	"types": ["@miniweb/core"]
+    "rootDir": "./src",                                // root source folder (where to find the root of the files to compile)
+    "outDir": "./dist",                                // output folder (where find the compiled files)
+    "strict": true,                                    // Enables strict type-checking for safer, more predictable code
+    "esModuleInterop": true,                           // Allows default imports from CommonJS modules
+    "target": "ES2022",                                // Outputs modern JavaScript (async/await etc)
+    "module": "NodeNext",                              // Required for modern ES module support (allow import/export)
+    "moduleResolution": "NodeNext",                    // support export in package.json and dont forget to put type: "module" in package.json (need to put extensions when import)
+    "declaration": true,                               // Generates `.d.ts` files alongside the build (useful for publishing a library)
+    "sourceMap": true,                                 // Generates `.map` files for easier debugging in the browser
+    "lib": [ "ES2022", "DOM" ],                        // Enables modern DOM + ES features (e.g., decorators, ES2022, browser APIs)
+    
+    "jsx": "react",                                    // Tells TS to compile JSX 
+    "jsxFactory": "F._jsx",                            // Rewrites `<div />` into `F._jsx(...)`,  so in our case, `Miniweb.createElement(...)`
+    "jsxFragmentFactory": "F._fragment",               // Rewrites `<>...</>` into `F._fragment(...)`,  so in our case, `Miniweb._fragment`
+
+    "types": ["@miniweb/core"]                         // Loads global types from the miniweb framework. TS need to know types informations about imported modules
   },
-    "include": [
-        "src"
-    ],
+    "include": [ "src" ],                              // all files (recursively) inside src are compiled
 }
+
+
+
+
+/**
+  Summary: This configuration enables a modern, strict TypeScript + JSX development environment,
+  
+  Notes:
+    - Since TypeScript is invoked by Rollup, project references (composite builds) won't be triggered automatically. Therefore, you must manually compile the Miniweb core package before building the demo.
+    - Both the demo and Miniweb core use "NodeNext" for the `module` and `moduleResolution` settings. This means you must always include file extensions (e.g., `import './utils.js'`) when importing local modules. Never use `.ts` extensions in imports, TypeScript leaves the resolution to the runtime (like in native Node ESM).
+**/
 

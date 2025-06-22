@@ -1,9 +1,9 @@
 {
-    "name": "miniweb",
+    "name": "@miniweb/core",
     "version": "1.0.0",
-    "packageManager": "yarn@4.8.1",
-    "license": "MIT",
-    "main": "lib/bundle.mjs",
+    "type": "module",
+    "main": "dist/index.mjs",
+    "types": "dist/index.d.mts",
     "scripts": {
         "prepublish": "tsc -b",
         "compile-core": "tsc -b",

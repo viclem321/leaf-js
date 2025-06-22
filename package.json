@@ -4,12 +4,11 @@
   "packageManager": "yarn@3.8.2",
   "workspaces": [
     "packages/miniweb",
-    "packages/miniweb/*",
     "packages/demo"
   ],
   "scripts": {
-    "compile-miniweb": "yarn workspace miniweb compile-core",
+    "compile-miniweb": "yarn workspace @miniweb/core compile-core",
     "compile-demo": "yarn workspace miniweb-demo build",
-    "full-build": "yarn workspace miniweb compile-core && yarn workspace miniweb-demo build"
+    "full-build": "yarn workspace @miniweb/core compile-core && yarn workspace miniweb-demo build"
   }
 }

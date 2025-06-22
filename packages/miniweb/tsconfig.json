@@ -1,18 +1,37 @@
+/**
+
+  🧠 TypeScript Configuration 
+
+  This file tells the TypeScript compiler how to interpret, validate, and transpile the TypeScript project.
+  As a reminder, TypeScript converts `.ts` and `.tsx` modules into standard JavaScript that can run in the browser.
+
+**/
+
 {
-  "files": [],
-  "references": [
-    { "path": "./core" }
-  ],
   "compilerOptions": {
-    "composite": true,
-    "declaration": true,
-    "emitDeclarationOnly": false,
-    "strict": true,
-    "esModuleInterop": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "jsx": "react-jsx",
-    "target": "ESNext",
-    "lib": ["esnext.decorators", "ES2022", "DOM"]
-  }
+    "rootDir": "./src",               // root source folder (where to find the root of the files to compile)
+    "outDir": "./dist",               // output folder (where find the compiled files)
+    "strict": true,                   // Enables strict type-checking for safer, more predictable code
+    "esModuleInterop": true,          // Allows default imports from CommonJS modules
+    "target": "ES2022",               // Outputs modern JavaScript (async/await etc)
+    "module": "NodeNext",             // Required for modern ES module support (allow import/export)
+    "moduleResolution": "NodeNext",   // support export in package.json and dont forget to put type: "module" in package.json (need to put extensions when import)
+    "composite": true,                // allow others packages to trigger the compile of this one and use the output with "references": [ { "path": "./core" } ] (not used in this project because demo using Rollup)
+    "declaration": true,              // Generates `.d.ts` files alongside the build (useful for publishing a library)   
+    "lib": [ "ES2022", "DOM"]         // common libs that you use in your project (like that typescript dont trigger a error when u use it)
+  },
+  "include": [ "src" ],               // all files (recursively) inside src are compiled
 }
+
+
+
+
+
+
+/**
+  Summary: This configuration enables a modern, strict TypeScript environment,
+  
+  Notes:
+    - This tsconfig authorize composite. It mean that you can trigger the compile from an other package. But the demo dont use this functionnality (because of Rollup).
+    - Both the demo and Miniweb core use "NodeNext" for the `module` and `moduleResolution` settings. It means you must always include file extensions (e.g., `import './utils.js'`) when importing local modules. Never use `.ts` extensions in imports, TypeScript leaves the resolution to the runtime (like in native Node ESM).
+**/

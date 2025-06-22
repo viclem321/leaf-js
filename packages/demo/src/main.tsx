@@ -1,11 +1,36 @@
-import * as F from "@miniweb/core";
-import { App } from "./App.js";
+import * as F from "@miniweb/core";     // import the framework
+import { App } from "./App.js";         // import the root component
 
 
 
-// initialize the shedulerRender with the good function (the render function).
+
+// Initialize the scheduler with the correct render function.
+// This tells the scheduler: "Each time I call schedulerRender.requestRender(), you should execute this render function (F.render(...))."
 F.runtimeState.schedulerRender.setRenderFunction(() => {
     F.render(<App />, document.getElementById("root")!);
   });
-// execute the very first render
+
+
+
+// Trigger the very first render.
+// You should never call F.render directly, always go through the scheduler.  Why? Because one render can trigger another render (and so on). The scheduler's job is to check whether a render is already in progress. If yes, it queues the next one. If not, it starts rendering immediately.
 F.runtimeState.schedulerRender.requestRender();
+
+
+
+
+
+
+
+/**
+
+🚀 main.tsx - The starting point of the entire app lifecycle in MiniWeb.
+
+
+This is the first javascript file to be executed by the client. It bootstraps the MiniWeb demo by :
+
+  - Importing the root component (`App`)
+  - Setting the render function to be used by the scheduler. Scheduler is a small object that ensures that multiple renders do not occur at the same time (for more infos : miniweb/reconciler/src/miniScheduler.mts)
+  - Triggering the first render manually
+
+**/

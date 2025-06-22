@@ -1,30 +1,44 @@
 import * as F from "@miniweb/core";
 
 
+/**
+ 
+  🎨 App.tsx - Root component of the MiniWeb demo
+  
+  This file defines the main `<App />` component, which is always the first component rendered by the framework.
+  It also contains (or imports) all other demo components used to showcase how MiniWeb works in practice.
+
+  Inside this component, you'll see several core features of the framework in action:
+    - State and effect hooks (`useState`, `useEffect`)
+    - Conditional rendering
+    - add props (css style, function, key, or other)
+    - Dynamic component mounting and unmounting
+
+  If you're new to MiniWeb, this is a great place to start exploring. Read through the code, and feel free to experiment by editing it.
+ 
+**/
 
 
 
 
-
-
+// A Header that logs a message on mount/unmount using `useEffect`
 export function Header() {
   F.useEffect(() => {
-    console.log("Header monté");
-    return () => {
-      console.log("Header démonté");
-    };
-  }, []); // pas de dépendances = effet monté une seule fois
+    console.log("Header mount");
+    return () => {  console.log("Header unmount");  };    // that's the cleanup function. Each time the component is umount (or each time this useEffect is called again), this function is called
+  }, []);                                 // As with React, a empty array means "execute this useEffect only when mounting the component"
 
   return (
     <header style={{ backgroundColor: "#80e0e0", padding: "10px", textAlign: "center", marginBottom: "2rem" }}>
-      <h1>Bienvenue sur MiniWeb</h1>
+      <h1>Welcome to MiniWeb</h1>
     </header>
   );
 }
 
 
 
-// Un composant Clock qui met à jour l'heure chaque seconde
+
+// a Time component that updates every second thanks to useEffect
 export function Clock() {
   const [time, setTime] = F.useState(new Date().toLocaleTimeString());
 
@@ -32,41 +46,39 @@ export function Clock() {
     const interval = setInterval(() => {
       setTime(new Date().toLocaleTimeString());
     }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(interval);    // that's the cleanup function. Each time the component is umount (or each time this useEffect is called again), this function is called
+  }, []);                                    // As with React, a empty array means "execute this useEffect only when mounting the component"
 
-  return <div style={{ fontSize: "1.2rem", margin: "10px 0" }}>Heure courante : {time}</div>;
+  return <div style={{ fontSize: "1.2rem", margin: "10px 0" }}>Current time : {time}</div>;
 }
 
 
 
 
-
-// Une liste qui affiche plusieurs éléments et ajoute un nouvel item après 2 secondes grâce à useEffect
+// A list that displays multiple items and adds a new item after 2 secondes using useEffect
 export function List() {
   const [items, setItems] = F.useState<string[]>(["Item 1", "Item 2", "Item 3"]);
 
+  // add new item after 2000 ms
   F.useEffect(() => {
-    // Ajoute un nouvel item après 2000ms
     const timeout = setTimeout(() => {
       setItems([...items, "Item 4"]);
     }, 2000);
-    return () => clearTimeout(timeout);
-  }, []); // monte une seule fois
+    return () => clearTimeout(timeout);    // that's the cleanup function. Each time the component is umount (or each time this useEffect is called again), this function is called
+  }, []);                                  // As with React, a empty array means "execute this useEffect only when mounting the component"
 
   return (
     <ul style={{ listStyleType: "circle", padding: "0 20px" }}>
       {items.map((item, index) => (
-        // Pense à fournir une key stable (ici l'index pour simplifier)
-        <ListItem key={index.toString()} item={item} />
+        <ListItem key={index.toString()} item={item} />  // Important : as with React, put a unique key in this case (for a better anderstanding, go to reconciler)
       ))}
     </ul>
   );
 }
 
 
-// Un composant ListItem qui gère son état interne (sélection)
-export function ListItem(props: { item: string }) {
+// One Item inside The List Component. Using styles props, and allow to select/unselect the item by clicking it
+export function ListItem(props: { item: string, key: string }) {
   const [selected, setSelected] = F.useState(false);
   return (
     <li
@@ -78,7 +90,7 @@ export function ListItem(props: { item: string }) {
         marginBottom: "4px",
       }}
     >
-      {props.item} {selected ? "(sélectionné)" : ""}
+      {props.item} {selected ? "(selected)" : ""}
     </li>
   );
 }
@@ -87,11 +99,11 @@ export function ListItem(props: { item: string }) {
 
 
 
-// Un composant Button simple qui affiche dans la console lorsqu'il est clique
+// A basic button usings style props, trigger a log in console on click
 export function MyButton() {
   return (
     <div>
-      <button  onClick={() => {  console.log("Bouton cliqué !"); }}   style={{ margin: "0.5rem", padding: "8px 16px", fontSize: "1rem", cursor: "pointer" }} >   Cliquez-moi  </button>
+      <button  onClick={() => {  console.log("Bouton clicked !"); }}   style={{ margin: "0.5rem", padding: "8px 16px", fontSize: "1rem", cursor: "pointer" }} >   Click me !  </button>
     </div>
   );
 }
@@ -99,19 +111,23 @@ export function MyButton() {
 
 
 
-// Le composant App, qui utilise des fragments pour grouper plusieurs éléments
+
+
+
+/**
+  Root component, called on every render.   This is a simple demo app showcasing:
+    - A Header that logs a message on mount/unmount using `useEffect`
+    - A clock that updates every second
+    - A "Click Me" button that logs a message to the console
+    - Three toggle buttons to mount/unmount each part of the UI (Header, Clock, Button) using `useState` and conditional rendering
+    - A small paragraph at the bottom
+**/
 export function App() {
 
   const [showHeader, setShowHeader] = F.useState(true);
   const [showList, setShowList] = F.useState(true);
   const [showClock, setShowClock] = F.useState(true);
   
-  F.useEffect(() => {
-    console.log("ShowHeader, showList ou showClock a été modifié");
-    return () => {
-      console.log("nettoyage avant reutilisation de ce useEffect");
-    };
-  }, [showHeader, showList, showClock]);
 
   return (
     <>
@@ -128,7 +144,7 @@ export function App() {
 
       <div style={{ marginTop: "20px", border: "1px solid gray", padding: "10px" }}>
         <p>
-          Cette page est une démonstration des fonctionnalités de MiniWeb. Elle utilise les fonctionnalités les plus connus des framework React-Like (système de composants, gestion des hooks, useState, useEffect, gestion propre de la supression/creation de composant pendant le rendu).
+          Cette page est une démonstration des fonctionnalités de MiniWeb. Elle utilise les fonctionnalités les plus connus des framework React-Like (système de composants, utilisations des props, gestion des hooks, useState, useEffect, gestion propre de la supression/creation de composant pendant le rendu).
         </p>
       </div>
 
