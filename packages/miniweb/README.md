@@ -7,18 +7,22 @@ Unlike production frameworks like React, Miniweb is intentionally simple, fully 
 Whether you're a beginner curious about how frameworks work under the hood, or an advanced developer wanting to build your own tools, this is where to look.
 
 All the core logic is contained in this folder, no black magic, no hidden steps.
+<br><br>
 
 
 
 
 
-# ⚙️ How Miniweb works (big picture)
 
-### Miniweb follows a simplified version of how modern frameworks like React operate. Below is a high-level overview of the main concepts behind its internal mechanics:
+
+## ⚙️ Important concepts to understand
+
+
+Miniweb follows a simplified version of how modern frameworks like React operate. Below is a high-level overview of the main concepts behind its internal mechanics:
 
 
     - Component :
-        Components in Miniweb are simple functions written in TSX that return a MiniElement (see next section for details about MiniElement).
+        Components in Miniweb are simple functions written in TSX/JSX that return a MiniElement (see next section for details about MiniElement).
         If you look at the return value of your components, you will not directly see a MiniElement, but rather a tag containing another component (<Component1/>), or a known html tag (<div>). In fact, at compile time, typescript takes care of transforming this tag into a call to the Miniweb.createElement(Component1) function, which returns a MiniElement containing all the information about Component1.
         From there, Miniweb uses the MiniElement to building the app tree recursively.
         📄 See ../packages/demo/App.tsx and src/elements.mts.
@@ -84,11 +88,14 @@ All the core logic is contained in this folder, no black magic, no hidden steps.
         A simple scheduling mechanism prevents multiple redundant renders and ensures updates are batched using microtasks. A render is only triggered once per tick, even if setState is called many times.
         Important: Always use the scheduler to run a render (calling miniweb.render directly may cause conflicts).
         📄 See src/miniSchedulerRender.mts
+<br><br>
 
 
 
 
-###  Recap of a Render Cycle : 
+
+
+##  Recap of a Render Cycle : 
 
 
 When scheduler.render() is called, Miniweb performs the rendering in 4 main steps:
@@ -112,116 +119,3 @@ When scheduler.render() is called, Miniweb performs the rendering in 4 main step
 
 ✅ The engine is unopinionated, there is no JSX parser, no router, no complex lifecycle. It's all written from scratch and fully understandable in a few files.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# 🧪 Miniweb Demo
-
-This folder contains a **simple demo application** built with the Miniweb framework.
-
-Its purpose is to showcase and test the main features of Miniweb in a clear and minimal example, including:
-
-- Functional components
-- `useState` and `useEffect` hooks
-- Conditional rendering
-- Dynamic DOM updates
-- Component mounting/unmounting
-- add props inside components (css style, functions, key, or other)
-
-
-
-
-
-## ▶️ How to Run
-
-From the root of the project, install dependencies and compile both the engine and the demo:
-
-```bash
-yarn install
-yarn compile-miniweb
-yarn compile-demo
-cd packages/demo
-npx serve .
-```
-
-You can now open the demo in your browser at http://localhost:3000 (or whatever port serve uses).
-
-
-
-
-
-## ✏️ How to Modify
-
-You can edit the demo by modifying the source files in this folder, especially App.tsx.
-
-After any changes, rebuild the demo:
-
-```bash
-yarn compile-demo
-```
-
-You're free to add your own components, try out edge cases, simulate mount/unmount cycles, test DOM updates and performance
-
-This demo is meant to be your playground.
-
-
-
-
-
-
-## 🔧 Demo Structure
-
-This demo is written in TypeScript and compiled using Rollup with support for .tsx syntax.
-
-Here's how it's structured:
-
-- index.html :   A minimal HTML file that loads the app via a single `<script>` tag pointing to the bundled JavaScript. That's the file to serve to users, in production.
-
-- main.tsx  :    The entry point of the app. This is where we:
-
-    - Import and initialize the Miniweb engine.
-
-    - Set the render function via scheduler.setRenderFunction(...).
-
-    - Call the first render()(via the scheduler) to mount the root component(`<App/>`) inside the DOM #root container.
-
-- App.tsx  :   The root React-style component of the app. This file contains the overall layout and the components used in the UI. It's the best place to experiment with new components or logic. Notice that every component (App, Header, Clock etc) are written using TSX syntax (transformed into functions at the typescript compilation), totally compatible with MiniWeb.
-
-
-- App.tsx  :   This is the root component (`<App/>`) of the demo application. It defines the main layout and handles all interactive logic, including components like Header, Clock, and List.
-
-All components are written using TSX syntax, which is compiled by TypeScript into plain JavaScript Miniweb functions. For example, when you write <Component prop1="hello"/>, it gets transformed into Miniweb.createElement( Component, { prop1: "hello" } ) during compilation, thanks to the project's tsconfig.json.
-
-This file acts as a sandbox: you can freely experiment by adding components, testing state updates, or using hooks like useEffect. It's the best place to get hands-on with how Miniweb works in a real interface.
-
-Note: All the demo code, including main.tsx, App.tsx, tsconfig.json, and the Rollup configuration, is heavily commented to maximize clarity and help you understand exactly what's happening at each step.
-
-
-
-
-
-
-## 🔄 Integration with the Core
-
-The demo uses the Miniweb framework located in packages/miniweb. It imports and interacts with the engine like any external app would:
-
-import { render, _jsx, _fragment, useState, useEffect } from "@miniweb/core"
-
-If you want to understand how Miniweb works internally, head over to the core engine README.

@@ -2,6 +2,8 @@ import { MiniElement } from "./elements.mjs";
 export {};     // Ensure this file is treated as a module
 
 
+
+
 /**  JSX.MTS Type Definitions for Miniweb
 
   This file tells TypeScript how to handle TSX/JSX syntax within the Miniweb framework.
@@ -9,11 +11,13 @@ export {};     // Ensure this file is treated as a module
     - What kind of elements you're allowed to write in TSX (<div>, <MyComponent>, etc)
     - How props are passed to components
     - What type the JSX syntax is compiled into (MiniElement)
-  This is what makes it possible to use Miniweb just like React — but with full type safety.
+  This is what makes it possible to use Miniweb just like React, but with full type safety.
 
  **/
 
 
+
+  
 
 
 // namespace JSX has to be declare as global. That's a typescript condition
@@ -59,6 +63,26 @@ declare global {
       fieldset: HTMLAttributes;
       legend: HTMLAttributes;
 
+      // Text format
+      strong: HTMLAttributes;
+      b: HTMLAttributes;
+      em: HTMLAttributes;
+      i: HTMLAttributes;
+      u: HTMLAttributes;
+      s: HTMLAttributes;
+      mark: HTMLAttributes;
+      small: HTMLAttributes;
+      sub: HTMLAttributes;
+      sup: HTMLAttributes;
+      code: HTMLAttributes;
+      kdb: HTMLAttributes;
+      var: HTMLAttributes;
+      del: HTMLAttributes;
+      ins: HTMLAttributes;
+      address: HTMLAttributes;
+      hr: HTMLAttributes;
+      cite: HTMLAttributes;
+
       // Media
       img: HTMLAttributes & { src?: string; alt?: string };
       video: HTMLAttributes;
@@ -73,6 +97,9 @@ declare global {
       ul: HTMLAttributes;
       ol: HTMLAttributes;
       li: HTMLAttributes;
+      dl: HTMLAttributes;
+      dt: HTMLAttributes;
+      dd: HTMLAttributes;
 
       // Layout
       header: HTMLAttributes;
@@ -100,6 +127,10 @@ declare global {
       title: HTMLAttributes;
       head: HTMLAttributes;
       body: HTMLAttributes;
+      abbr: HTMLAttributes;
+      time: HTMLAttributes;
+      bdo: HTMLAttributes;
+      bdi: HTMLAttributes;
 
       // [tagName: string]: HTMLAttributes;   // Custom or unknown tags fallback
     }

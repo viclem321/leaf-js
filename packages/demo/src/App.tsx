@@ -57,7 +57,7 @@ export function Clock() {
 
 // A list that displays multiple items and adds a new item after 2 secondes using useEffect
 export function List() {
-  const [items, setItems] = F.useState<string[]>(["Item 1", "Item 2", "Item 3"]);
+  const [items, setItems] = F.useState(["Item 1", "Item 2", "Item 3"]);
 
   // add new item after 2000 ms
   F.useEffect(() => {
@@ -144,7 +144,7 @@ export function App() {
 
       <div style={{ marginTop: "20px", border: "1px solid gray", padding: "10px" }}>
         <p>
-          Cette page est une démonstration des fonctionnalités de MiniWeb. Elle utilise les fonctionnalités les plus connus des framework React-Like (système de composants, utilisations des props, gestion des hooks, useState, useEffect, gestion propre de la supression/creation de composant pendant le rendu).
+          This page is a demonstration of the core features of <strong>MiniWeb</strong>, a lightweight React-like framework. It showcases essential concepts such as component structure, props passing, state management with <code>useState</code>, side effects with <code>useEffect</code>, and clean handling of component mounting and unmounting during render cycles.
         </p>
       </div>
 

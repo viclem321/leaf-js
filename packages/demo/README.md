@@ -11,6 +11,8 @@ Its purpose is to showcase and test the main features of Miniweb in a clear and 
 - Component mounting/unmounting
 - add props inside components (css style, functions, key, or other)
 
+<br><br>
+
 
 
 
@@ -28,6 +30,9 @@ npx serve .
 ```
 
 You can now open the demo in your browser at http://localhost:3000 (or whatever port serve uses).
+<br><br>
+
+
 
 
 
@@ -46,6 +51,8 @@ yarn compile-demo
 You're free to add your own components, try out edge cases, simulate mount/unmount cycles, test DOM updates and performance
 
 This demo is meant to be your playground.
+<br><br>
+
 
 
 
@@ -78,6 +85,8 @@ All components are written using TSX syntax, which is compiled by TypeScript int
 This file acts as a sandbox: you can freely experiment by adding components, testing state updates, or using hooks like useEffect. It's the best place to get hands-on with how Miniweb works in a real interface.
 
 Note: All the demo code, including main.tsx, App.tsx, tsconfig.json, and the Rollup configuration, is heavily commented to maximize clarity and help you understand exactly what's happening at each step.
+<br><br>
+
 
 
 
