@@ -1,0 +1,15 @@
+{
+    "name": "@leaf-js/core",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "dist/index.mjs",
+    "types": "dist/index.d.mts",
+    "scripts": {
+        "prepublish": "tsc -b",
+        "compile-core": "tsc -b",
+        "watch-core": "tsc -wb"
+    },
+    "devDependencies": {
+        "typescript": "^5.4.5"
+    }
+}
