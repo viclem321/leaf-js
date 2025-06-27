@@ -1,4 +1,4 @@
-import * as F from "@miniweb/core";     // import the framework
+import * as F from "@leaf-js/core";     // import the engine
 import { App } from "./App.js";         // import the root component
 
 
@@ -24,13 +24,13 @@ F.runtimeState.schedulerRender.requestRender();
 
 /**
 
-🚀 main.tsx - The starting point of the entire app lifecycle in MiniWeb.
+🚀 main.tsx - The starting point of the entire app lifecycle in leaf-js.
 
 
-This is the first javascript file to be executed by the client. It bootstraps the MiniWeb demo by :
+This is the first javascript file to be executed by the client. It bootstraps the leaf-js demo by :
 
   - Importing the root component (`App`)
-  - Setting the render function to be used by the scheduler. Scheduler is a small object that ensures that multiple renders do not occur at the same time (for more infos : miniweb/reconciler/src/miniScheduler.mts)
+  - Setting the render function to be used by the scheduler. Scheduler is a small object that ensures that multiple renders do not occur at the same time (for more infos : leaf-js/src/Scheduler.mts)
   - Triggering the first render manually
 
 **/

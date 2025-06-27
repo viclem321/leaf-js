@@ -1,12 +1,12 @@
-import * as F from "@miniweb/core";
+import * as F from "@leaf-js/core";
 
 
 /**
  
-  🎨 App.tsx - Root component of the MiniWeb demo
+  🎨 App.tsx - Root component of the leaf-js demo
   
   This file defines the main `<App />` component, which is always the first component rendered by the framework.
-  It also contains (or imports) all other demo components used to showcase how MiniWeb works in practice.
+  It also contains (or imports) all other demo components used to showcase how leaf-js works in practice.
 
   Inside this component, you'll see several core features of the framework in action:
     - State and effect hooks (`useState`, `useEffect`)
@@ -14,7 +14,7 @@ import * as F from "@miniweb/core";
     - add props (css style, function, key, or other)
     - Dynamic component mounting and unmounting
 
-  If you're new to MiniWeb, this is a great place to start exploring. Read through the code, and feel free to experiment by editing it.
+  If you're new to leaf-js, this is a great place to start exploring. Read through the code, and feel free to experiment by editing it.
  
 **/
 
@@ -30,7 +30,7 @@ export function Header() {
 
   return (
     <header style={{ backgroundColor: "#80e0e0", padding: "10px", textAlign: "center", marginBottom: "2rem" }}>
-      <h1>Welcome to MiniWeb</h1>
+      <h1>Welcome to leaf-js</h1>
     </header>
   );
 }
@@ -144,7 +144,7 @@ export function App() {
 
       <div style={{ marginTop: "20px", border: "1px solid gray", padding: "10px" }}>
         <p>
-          This page is a demonstration of the core features of <strong>MiniWeb</strong>, a lightweight React-like framework. It showcases essential concepts such as component structure, props passing, state management with <code>useState</code>, side effects with <code>useEffect</code>, and clean handling of component mounting and unmounting during render cycles.
+          This page is a demonstration of the core features of <strong>leaf-js</strong>, a lightweight React-like framework. It showcases essential concepts such as component structure, props passing, state management with <code>useState</code>, side effects with <code>useEffect</code>, and clean handling of component mounting and unmounting during render cycles.
         </p>
       </div>
 

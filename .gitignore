@@ -5,6 +5,12 @@ lib/
 *.tsbuildinfo
 
 
+#yarn
+.yarn/cache/
+.yarn/unplugged/
+.yarn/install-state.gz
+.yarn/build-state.yml
+
 # others
 .vscode/
 *.log

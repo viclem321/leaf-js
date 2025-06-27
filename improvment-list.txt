@@ -1,3 +1,0 @@
-- rewrite in english the paragraphe inside <App/>
-- change ReadMe.md into README.md (because at the moment, this cause display bugs)
-- rewrite all README.md with line break etc for more clarety

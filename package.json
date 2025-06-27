@@ -1,14 +1,14 @@
 {
-  "name": "miniweb-monorepo",
+  "name": "leaf-js-monorepo",
   "private": true,
   "packageManager": "yarn@3.8.2",
   "workspaces": [
-    "packages/miniweb",
+    "packages/leaf-js",
     "packages/demo"
   ],
   "scripts": {
-    "compile-miniweb": "yarn workspace @miniweb/core compile-core",
-    "compile-demo": "yarn workspace miniweb-demo build",
-    "full-build": "yarn workspace @miniweb/core compile-core && yarn workspace miniweb-demo build"
+    "compile-leaf": "yarn workspace @leaf-js/core compile-core",
+    "compile-demo": "yarn workspace leaf-js-demo build",
+    "full-build": "yarn workspace @leaf-js/core compile-core && yarn workspace leaf-js-demo build"
   }
 }
