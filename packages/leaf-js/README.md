@@ -1,4 +1,4 @@
-# 🧠 Leaf-js Core
+# 🧠 Leaf-js Core (./src/core)
 
 This is the core engine of the leaf-js framework, the part responsible for rendering components, managing the virtual DOM, executing hooks, handling updates, and committing changes to the real DOM.
 
@@ -117,5 +117,5 @@ When scheduler.render() is called, leaf-js performs the rendering in 4 main step
 
 
 
-✅ The engine is unopinionated, there is no JSX parser, no router, no complex lifecycle. It's all written from scratch and fully understandable in a few files.
+✅ The engine is all written from scratch and fully understandable in a few files.
 

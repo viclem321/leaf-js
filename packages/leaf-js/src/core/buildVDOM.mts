@@ -134,7 +134,8 @@ export function createFiberTree( element: LeafElement | LeafChild, parentFiber: 
       
       // execute component, which will return a LeafChild
       runtimeState.currentHooksInstance = instanceHook;  instanceHook.hookIndex = 0;
-      const renderedElement = component(element.props);    
+      const propsWithChildren = { ...element.props, children: element.children }; // allow to use children inside component exec
+      const renderedElement = component(propsWithChildren);    
       runtimeState.currentHooksInstance = null;
       
       // Recursively createFiberTree child

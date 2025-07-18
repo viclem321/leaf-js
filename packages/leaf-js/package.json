@@ -1,5 +1,5 @@
 {
-    "name": "@leaf-js/core",
+    "name": "leaf-js",
     "version": "1.0.0",
     "type": "module",
     "main": "dist/index.mjs",

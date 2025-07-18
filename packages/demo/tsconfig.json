@@ -27,7 +27,7 @@
     "jsxFactory": "F._jsx",                            // Rewrites `<div />` into `F._jsx(...)`,  so in our case, `Leaf.createElement(...)`
     "jsxFragmentFactory": "F._fragment",               // Rewrites `<>...</>` into `F._fragment(...)`,  so in our case, `Leaf._fragment`
 
-    "types": ["@leaf-js/core"]                         // Loads global types from the leaf-js framework. TS need to know types informations about imported modules
+    "types": ["leaf-js"]                         // Loads global types from the leaf-js framework. TS need to know types informations about imported modules
   },
     "include": [ "src" ],                              // all files (recursively) inside src are compiled
 }

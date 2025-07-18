@@ -7,8 +7,8 @@
     "packages/demo"
   ],
   "scripts": {
-    "compile-leaf": "yarn workspace @leaf-js/core compile-core",
-    "compile-demo": "yarn workspace leaf-js-demo build",
-    "full-build": "yarn workspace @leaf-js/core compile-core && yarn workspace leaf-js-demo build"
+    "compile-leaf": "yarn workspace leaf-js compile-core",
+    "compile-demo": "yarn workspace demo build",
+    "full-build": "yarn workspace leaf-js compile-core && yarn workspace demo build"
   }
 }
