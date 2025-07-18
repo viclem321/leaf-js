@@ -1,6 +1,5 @@
-import * as F from "leaf-js";
-import { Router, Route } from "leaf-js";
-import { Header, Clock, List, ListItem, MyButton } from "./components.js";
+import * as F from "@viclem321/leaf-js";
+import { Router, Route } from "@viclem321/leaf-js";
 import { Home } from "./Home.js";
 import { Page2 } from "./Page2.js";
 

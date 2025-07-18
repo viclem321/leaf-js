@@ -19,7 +19,7 @@ This demo showcases the main features of the framework, including components, st
 
 ```bash
 yarn install
-yarn compile-leaf-js
+yarn compile-leaf
 yarn compile-demo
 cd packages/demo
 npx serve .

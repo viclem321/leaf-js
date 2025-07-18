@@ -1,5 +1,6 @@
 {
   "name": "leaf-js-monorepo",
+  "version": "1.2.0",
   "private": true,
   "packageManager": "yarn@3.8.2",
   "workspaces": [
@@ -7,8 +8,8 @@
     "packages/demo"
   ],
   "scripts": {
-    "compile-leaf": "yarn workspace leaf-js compile-core",
+    "compile-leaf": "yarn workspace @viclem321/leaf-js compile",
     "compile-demo": "yarn workspace demo build",
-    "full-build": "yarn workspace leaf-js compile-core && yarn workspace demo build"
+    "full-build": "yarn workspace @viclem321/leaf-js compile && yarn workspace demo build"
   }
 }

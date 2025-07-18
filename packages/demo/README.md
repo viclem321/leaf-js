@@ -23,7 +23,7 @@ From the root of the project, install dependencies and compile both the engine a
 
 ```bash
 yarn install
-yarn compile-leaf-js
+yarn compile-leaf
 yarn compile-demo
 cd packages/demo
 npx serve .
@@ -99,6 +99,6 @@ Note: All the demo code, including main.tsx, App.tsx, tsconfig.json, and the Rol
 
 The demo uses the leaf-js framework located in packages/leaf-js. It imports and interacts with the engine like any external app would:
 
-import { render, _jsx, _fragment, useState, useEffect } from "leaf-js"
+import { render, _jsx, _fragment, useState, useEffect } from "@viclem321/leaf-js"
 
 If you want to understand how leaf-js works internally, head over to the core engine README.

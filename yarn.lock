@@ -264,6 +264,14 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@viclem321/leaf-js@npm:*, @viclem321/leaf-js@workspace:packages/leaf-js":
+  version: 0.0.0-use.local
+  resolution: "@viclem321/leaf-js@workspace:packages/leaf-js"
+  dependencies:
+    typescript: "npm:^5.4.5"
+  languageName: unknown
+  linkType: soft
+
 "abbrev@npm:^3.0.0":
   version: 3.0.1
   resolution: "abbrev@npm:3.0.1"
@@ -403,7 +411,7 @@ __metadata:
   dependencies:
     "@rollup/plugin-node-resolve": "npm:^15.2.3"
     "@rollup/plugin-typescript": "npm:^11.1.6"
-    leaf-js: "npm:*"
+    "@viclem321/leaf-js": "npm:*"
     rollup: "npm:^4.18.0"
     rollup-plugin-import-css: "npm:^3.5.8"
     tslib: "npm:^2.8.1"
@@ -671,14 +679,6 @@ __metadata:
 "leaf-js-monorepo@workspace:.":
   version: 0.0.0-use.local
   resolution: "leaf-js-monorepo@workspace:."
-  languageName: unknown
-  linkType: soft
-
-"leaf-js@npm:*, leaf-js@workspace:packages/leaf-js":
-  version: 0.0.0-use.local
-  resolution: "leaf-js@workspace:packages/leaf-js"
-  dependencies:
-    typescript: "npm:^5.4.5"
   languageName: unknown
   linkType: soft
 

@@ -1,4 +1,4 @@
-import * as F from "leaf-js";     // import the engine
+import * as F from "@viclem321/leaf-js";     // import the engine
 import { App } from "./App.js";         // import the root component
 
 

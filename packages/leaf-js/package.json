@@ -1,15 +1,43 @@
 {
-    "name": "leaf-js",
-    "version": "1.0.0",
+    "name": "@viclem321/leaf-js",
+    "version": "1.2.0",
+    "description": "A minimalist educative JSX-based framework.",
     "type": "module",
     "main": "dist/index.mjs",
     "types": "dist/index.d.mts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.mjs",
+            "types": "./dist/index.d.mts"
+        }
+    },
+    "files": [
+        "dist"
+    ],
     "scripts": {
-        "prepublish": "tsc -b",
-        "compile-core": "tsc -b",
-        "watch-core": "tsc -wb"
+        "prepublishOnly": "tsc -b",
+        "compile": "tsc -b",
+        "watch": "tsc -wb"
     },
     "devDependencies": {
         "typescript": "^5.4.5"
+    },
+    "keywords": [
+        "jsx",
+        "react-like",
+        "framework",
+        "leaf",
+        "leaf-js",
+        "hooks",
+        "typescript"
+    ],
+    "author": "viclem321",
+    "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/viclem321/leaf-js.git"
     }
 }

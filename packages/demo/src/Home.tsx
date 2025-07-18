@@ -1,5 +1,5 @@
-import * as F from "leaf-js";
-import { Header, Clock, List, ListItem, MyButton } from "./components.js";
+import * as F from "@viclem321/leaf-js";
+import { Header, Clock, List, MyButton } from "./components.js";
 
 
 

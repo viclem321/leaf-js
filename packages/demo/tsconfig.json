@@ -24,10 +24,10 @@
     "lib": [ "ES2022", "DOM" ],                        // Enables modern DOM + ES features (e.g., decorators, ES2022, browser APIs)
     
     "jsx": "react",                                    // Tells TS to compile JSX 
-    "jsxFactory": "F._jsx",                            // Rewrites `<div />` into `F._jsx(...)`,  so in our case, `Leaf.createElement(...)`
-    "jsxFragmentFactory": "F._fragment",               // Rewrites `<>...</>` into `F._fragment(...)`,  so in our case, `Leaf._fragment`
+    "jsxFactory": "F._jsx",                            // Rewrites `<div />` into `F._jsx(...)`,  so in our case, `@viclem321/leaf-js.createElement(...)`
+    "jsxFragmentFactory": "F._fragment",               // Rewrites `<>...</>` into `F._fragment(...)`,  so in our case, `@viclem321/leaf-js._fragment`
 
-    "types": ["leaf-js"]                         // Loads global types from the leaf-js framework. TS need to know types informations about imported modules
+    "types": ["@viclem321/leaf-js"]                               // Loads global types from the leaf-js framework. TS need to know types informations about imported modules
   },
     "include": [ "src" ],                              // all files (recursively) inside src are compiled
 }
@@ -39,7 +39,7 @@
   Summary: This configuration enables a modern, strict TypeScript + JSX development environment,
   
   Notes:
-    - Since TypeScript is invoked by Rollup, project references (composite builds) won't be triggered automatically. Therefore, you must manually compile the leaf-js core package before building the demo.
-    - Both the demo and leaf-js core use "NodeNext" for the `module` and `moduleResolution` settings. This means you must always include file extensions (e.g., `import './utils.js'`) when importing local modules. Never use `.ts` extensions in imports, TypeScript leaves the resolution to the runtime (like in native Node ESM).
+    - Since TypeScript is invoked by Rollup, project references (composite builds) won't be triggered automatically. Therefore, you must manually compile the leaf-js framework before building the demo.
+    - Both the demo and leaf-js framework use "NodeNext" for the `module` and `moduleResolution` settings. This means you must always include file extensions (e.g., `import './utils.js'`) when importing local modules. Never use `.ts` extensions in imports, TypeScript leaves the resolution to the runtime (like in native Node ESM).
 **/
 

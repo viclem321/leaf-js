@@ -1,4 +1,4 @@
-import * as F from "leaf-js";
+import * as F from "@viclem321/leaf-js";
 
 
 
