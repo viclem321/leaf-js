@@ -3,7 +3,11 @@
 Leaf-js is a small, educational JavaScript framework built from scratch, in the spirit of libraries like React, with the goal of helping both myself and others better understand how such frameworks work under the hood.
 
 This project is not meant for production use, but rather as a learning tool or playground. It implements a virtual DOM, fiber-based reconciliation, hooks (useState, useEffect), component rendering, and more.
+
 <br><br><br>
+
+
+
 
 
 
@@ -42,6 +46,9 @@ You can also build a brand-new site using leaf-js as a base, the demo gives you 
 
 
 
+
+
+
 ## ⚙️ Core Engine (How It Works)
 
 The full source code for the leaf-js engine is located in [`packages/leaf-js`](./packages/leaf-js). The architecture is designed to be:
@@ -55,6 +62,29 @@ The codebase is thoroughly **commented**, and the logic follows the internal ste
 If you want to dive into the internals and understand how frameworks like React work, or even build your own, this is the place to look.
 
 See [`packages/leaf-js/README.md`](./packages/leaf-js/README.md) for a full breakdown of the internal structure.
+<br><br><br>
+
+
+
+
+
+
+
+
+
+## How to Use in a Real Project
+
+Although this project is primarily educational, it can also be used in real-world projects to build functional websites.
+
+If you want to use the compiled framework, it's available as an NPM package:
+
+```bash
+npm install @viclem321/leaf-js
+```
+or if you're using Yarn:
+```bash
+yarn add @viclem321/leaf-js
+```
 <br><br><br>
 
 

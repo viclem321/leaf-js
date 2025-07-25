@@ -181,7 +181,16 @@ export function createFiberTree( element: LeafElement | LeafChild, parentFiber: 
 
 
 
-// These functions find the correct InstanceKey for a given element
+
+
+
+// These functions determine the correct instanceKey for a given element.
+// If a `key` prop is provided, the instanceKey is set to that key. Otherwise, the instanceKey is derived from the element's path within the VDOM tree.
+
+// ⚠️ Important: The only reliable way to guarantee a unique instanceKey is to explicitly provide a `key` prop. Without it, two different component instances may accidentally share the same instanceKey.
+// For example:
+//   bool1 ? <Header prop="1" /> : <Header prop="2" />
+//   When `bool1` toggles, the new <Header /> component reuses the same position (path) in the VDOM, and therefore gets the same instanceKey, even though it's logically a different component instance.
 
 function getInstanceKeyIfLeafElement( parentInstanceKey: string, index: number, element: LeafElement): string {
     const base = parentInstanceKey ? `${parentInstanceKey}-` : "";
