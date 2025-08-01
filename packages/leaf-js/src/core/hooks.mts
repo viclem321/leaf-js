@@ -8,7 +8,7 @@ import { runtimeState } from "./runtime.mjs";
 
   As a reminder, hooks are special functions that you can call inside functional components to add extra behavior
 
-  For the moment, implemented hooks are : useState() , useRef() and useEffect().
+  For the moment, implemented hooks are : useState() , useRef(), useEffect(), useMemo() and useCallback().
 
 **/
 
@@ -27,7 +27,7 @@ export type HooksInstance = {
   hookIndex: number;    // Used to know which hook is currently read/write during render
 };
 
-export type HookEntry = any | HookEntryEffect;        // A slot in the `hooks` array. It can store a value (or a set of values) belonging to a hook
+export type HookEntry = any | HookEntryEffect | HookMemoEntry | HookCallbackEntry;        // A slot in the `hooks` array. It can store a value (or a set of values) belonging to a hook
 
 
 
@@ -92,7 +92,7 @@ export function useRef<T>(initialValue: T): { current: T } {
 export function useEffect(fn: () => void | (() => void), deps: any[]) {
 
   // get current instance
-  if (!runtimeState.currentHooksInstance) { throw new Error("useEffect must be called inside a component"); }
+  if (!runtimeState.currentHooksInstance) { throw new Error("useEffect called, but there isnt an activ Instance..."); }
   const instance = runtimeState.currentHooksInstance;  const i = instance.hookIndex;
   if (!instance.hooks[i]) { instance.hooks[i] = { deps: undefined, cleanup: undefined }; }
 
@@ -127,11 +127,81 @@ export type Effect = {
 
 
 
+
+// Memorizes the result of a computation (function), and only recomputes it when the dependencies (`deps`) array changes. This is useful to avoid re-executing expensive calculations on every render, and helps optimize performance when the result is stable.
+// If `deps` are unchanged between renders, the cached value is returned. If `deps` are different, the factory function is executed again.
+// Unlike `useEffect`, the function is called immediately (not asynchronously after the render).
+export function useMemo<T>(fn: () => T, deps: any[]): T {
+
+  // get current instance
+  if (!runtimeState.currentHooksInstance) { throw new Error("useMemo called, but there isnt an activ Instance..."); }
+  const instance = runtimeState.currentHooksInstance;  const i = instance.hookIndex;
+
+  const prev = instance.hooks[i] as HookMemoEntry | undefined;                                 // prev = last HookMemoEntry
+
+  const hasChanged = !prev || !prev.deps || deps.some((dep, i) => dep !== prev.deps?.[i]);     // verify if deps changed
+
+  if (hasChanged) {                                                                            // if deps changed, execute the function and backup deps
+    const newValue = fn();
+    instance.hooks[i] = { deps, value: newValue };
+  }
+
+  instance.hookIndex++;                                                                        // improve hookIndex for next hooks
+  return (instance.hooks[i] as HookMemoEntry).value;                      
+}
+
+
+export type HookMemoEntry = {
+  deps: any[] | undefined; value: any;
+};
+
+
+
+
+
+
+
+
+// useCallback returns a memoized version of the callback function that only changes if one of the dependencies has changed, allowing to not regenerate the function at each render.
+// This is useful when passing callbacks to optimized child components or states (with useState) that rely on reference equality to avoid unnecessary renders.
+export function useCallback<T extends (...args: any[]) => any>(fn: T, deps: any[]): T {
+  
+  // get current instance
+  if (!runtimeState.currentHooksInstance) { throw new Error("useCallback called, but there isnt an activ Instance..."); }
+  const instance = runtimeState.currentHooksInstance;  const i = instance.hookIndex;
+
+
+
+  const prev = instance.hooks[i] as HookCallbackEntry | undefined;                                      // prev = last HookCallbackEntry
+
+  const hasChanged = !prev || !deps || !prev.deps || deps.some((d, ind) => d !== prev.deps![ind]);      // verify if deps changed
+
+  if (hasChanged) { instance.hooks[i] = { deps, callback: fn } as HookCallbackEntry<T>; }               // if deps changed, execute the function and backup deps
+
+  instance.hookIndex++;                                                                                 // improve hookIndex for next hooks
+  return (instance.hooks[i] as HookCallbackEntry<T>).callback;
+}
+
+
+export type HookCallbackEntry<T extends (...args: any[]) => any = (...args: any[]) => any> = {
+  deps: any[] | undefined;
+  callback: T;
+};
+
+
+
+
+
+
+
+
 /**
-  🧪 Example usage of useState and useEffect in a component (TSX):
+  🧪 Example usage of hooks in a component (TSX):
     const [count, setCount] = useState(0);
     const timer = useRef(null);
     useEffect(() => { console.log("Mounted"); return () => console.log("Cleaned up because Unmount"); }, []);
+    let a = 100; let b = 500;  const result = useMemo(() => { return a * b; }, [a, b]);
+    let c = 5; let d = 20; const myFn = useCallback(() => { return c + d }, [c, d]);
     return ...
 */
 
